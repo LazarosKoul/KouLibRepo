@@ -1,0 +1,22 @@
+[
+	{
+		"bookName": "JavaProgramming",
+		"bookAuthor": "PaulDietel"
+	},
+	{
+		"bookName": "ThePowerofWhen",
+		"bookAuthor": "MichaelBreus,PhD"
+	},
+	{
+		"bookName": "12rulesforlife",
+		"bookAuthor": "JordanPeterson"
+	},
+	{
+		"bookName": "Limitless",
+		"bookAuthor": "JimKwik"
+	},
+	{
+		"bookName": "StartwithWhy",
+		"bookAuthor": "SimonSinek"
+	}
+]
