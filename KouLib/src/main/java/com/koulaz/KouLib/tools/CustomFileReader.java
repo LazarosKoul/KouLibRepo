@@ -33,7 +33,7 @@ public final class CustomFileReader {
 		String inputText = "";
 
 		while (input.hasNext()) {
-			inputText += input.next();
+			inputText += input.next()+" ";
 		}
 		System.err.println("Done!");
 		closeFileAfterRead();

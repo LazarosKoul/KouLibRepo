@@ -1,22 +1,26 @@
 [
 	{
-		"bookName": "JavaProgramming",
-		"bookAuthor": "PaulDietel"
+		"bookName": "Java Programming",
+		"bookAuthor": "Paul Dietel"
 	},
 	{
-		"bookName": "ThePowerofWhen",
-		"bookAuthor": "MichaelBreus,PhD"
+		"bookName": "The Power of When",
+		"bookAuthor": "Michael Breus, PhD"
 	},
 	{
-		"bookName": "12rulesforlife",
-		"bookAuthor": "JordanPeterson"
+		"bookName": "12 rules for life",
+		"bookAuthor": "Jordan Peterson"
 	},
 	{
 		"bookName": "Limitless",
-		"bookAuthor": "JimKwik"
+		"bookAuthor": "Jim Kwik"
 	},
 	{
-		"bookName": "StartwithWhy",
-		"bookAuthor": "SimonSinek"
+		"bookName": "Start with Why",
+		"bookAuthor": "Simon Sinek"
+	},
+	{
+		"bookName": "Think like a Monk",
+		"bookAuthor": "Jay Shety"
 	}
 ]
