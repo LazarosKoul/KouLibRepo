@@ -1,28 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.koulaz.KouLib.frames;
 
 import com.koulaz.KouLib.entities.Book;
 import com.koulaz.KouLib.tools.CustomFileReader;
-import javax.swing.table.AbstractTableModel;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import swingWorkers.TableManager;
 
-/**
- *
- * @author Lazaros
- */
 public class MainAppFrame extends javax.swing.JFrame {
 
     Book[] books;
+    NewBookFrame newBookFrame;
 
-    /**
-     * Creates new form NewJFrame
-     */
     public MainAppFrame() {
-        books = new CustomFileReader().getBooksFromFile();
+        books = CustomFileReader.getBooksFromFile();
         initComponents();
+
+        addWindowListener(new WindowAdapter() {
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                new TableManager(jLabel1, bookTable).execute();
+            }
+        });
     }
 
     /**
@@ -38,6 +37,7 @@ public class MainAppFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         bookTable = new javax.swing.JTable();
+        refreshButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("KoulLib");
@@ -52,8 +52,15 @@ public class MainAppFrame extends javax.swing.JFrame {
             }
         });
 
-        bookTable.setModel(new BookTableModel(books));
         jScrollPane1.setViewportView(bookTable);
+
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/koulaz/KouLib/frames/resources/refresh.gif"))); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,10 +69,13 @@ public class MainAppFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(refreshButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,71 +84,32 @@ public class MainAppFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(42, 42, 42))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(refreshButton)
+                    .addComponent(jButton1))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        NewBookFrame newBookFrame = new NewBookFrame();
+        if (newBookFrame == null) {
+            newBookFrame = new NewBookFrame();
+        }
         newBookFrame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        new TableManager(jLabel1, bookTable).execute();
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable bookTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
-
-    class BookTableModel extends AbstractTableModel {
-
-        private Book[] books;
-
-        public BookTableModel(Book[] books) {
-            this.books = books;
-        }
-
-        @Override
-        public int getRowCount() {
-            return books.length;
-        }
-
-        @Override
-        public int getColumnCount() {
-
-            return 2;
-        }
-
-        public String getColumnName(int column) {
-            switch (column) {
-                case 0:
-                    return "Title";
-                case 1:
-                    return "Author";
-            }
-            return "";
-
-        }
-
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            Book book = books[rowIndex];
-            switch (columnIndex) {
-                case 0:
-                    return book.getBookName();
-                case 1:
-                    return book.getBookAuthor();
-            }
-            return null;
-        }
-    }
-
 }

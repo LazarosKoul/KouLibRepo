@@ -9,10 +9,10 @@ import com.koulaz.KouLib.entities.Book;
 
 public final class CustomFileReader {
 
-	private Scanner input;
+	private static Scanner input;
 	private final static File booksFile = new File("data\\Books.json");
 
-	private void openFileForRead(File file) {
+	private static void openFileForRead(File file) {
 		try {
 			input = new Scanner(file);
 		} catch (IOException e) {
@@ -21,12 +21,12 @@ public final class CustomFileReader {
 		}
 	}
 
-	private void closeFileAfterRead() {
+	private static void closeFileAfterRead() {
 		if (input != null)
 			input.close();
 	}
 
-	public Book[] getBooksFromFile() {
+	public static Book[] getBooksFromFile() {
 		openFileForRead(booksFile);
 
 		System.err.print("[Reader]Reading...");

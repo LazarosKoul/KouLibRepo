@@ -11,10 +11,10 @@ import com.koulaz.KouLib.entities.*;
 
 public final class CustomFileWriter {
 
-	private FileWriter output;
+	private static FileWriter output;
 	private final static File booksFile = new File("data\\Books.json");
 
-	private void openFileToWrite(File file) {
+	private static void openFileToWrite(File file) {
 		if (!file.isFile()) {
 			try {
 				file.createNewFile();
@@ -32,7 +32,7 @@ public final class CustomFileWriter {
 		}
 	}
 
-	private void closeFileAfterWrite() {
+	private static void closeFileAfterWrite() {
 		if (output != null) {
 			try {
 				output.close();
@@ -43,9 +43,8 @@ public final class CustomFileWriter {
 
 	}
 
-	public void saveBooktoFile(Book newBook) {
-		CustomFileReader reader = new CustomFileReader();
-		ArrayList<Book> books = new ArrayList<Book> (Arrays.asList(reader.getBooksFromFile()));
+	public static void saveBooktoFile(Book newBook) {
+		ArrayList<Book> books = new ArrayList<Book> (Arrays.asList(CustomFileReader.getBooksFromFile()));
 		books.add(newBook);
 
 		openFileToWrite(booksFile);

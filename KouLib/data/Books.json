@@ -1,26 +1,54 @@
-[
-	{
-		"bookName": "Java Programming",
-		"bookAuthor": "Paul Dietel"
-	},
-	{
-		"bookName": "The Power of When",
-		"bookAuthor": "Michael Breus, PhD"
-	},
-	{
-		"bookName": "12 rules for life",
-		"bookAuthor": "Jordan Peterson"
-	},
-	{
-		"bookName": "Limitless",
-		"bookAuthor": "Jim Kwik"
-	},
-	{
-		"bookName": "Start with Why",
-		"bookAuthor": "Simon Sinek"
-	},
-	{
-		"bookName": "Think like a Monk",
-		"bookAuthor": "Jay Shety"
-	}
-]
+[{
+        "bookName": "Java Programming",
+        "categories":["Programming"],
+        "bookAuthors": [{
+                "firstName": "Paul",
+                "lastName": "Dietel"
+            },{
+                "firstName": "Harvey",
+                "lastName": "Dietel"
+            }
+            ]
+    }, {
+        "bookName": "The Power of When",
+        "categories":["Self-Development"],
+        "bookAuthors": [{
+                "firstName": "Michael",
+                "lastName": "Breus"
+            }]
+    }, {
+        "bookName": "12 rules for life",
+        "categories":["Self-Development"],
+        "bookAuthors": [{
+                "firstName": "Jordan",
+                "lastName": "Peterson"
+            }]
+    }, {
+        "bookName": "Limitless",
+        "categories":["Self-Development","Team-Development" ],
+        "bookAuthors": [{
+                "firstName": "Jim",
+                "lastName": "Kwik"
+            }]
+    }, {
+        "bookName": "Start with Why",
+        "categories":["Self-Development","Team-Development"],
+        "bookAuthors": [{
+                "firstName": "Simon",
+                "lastName": "Sinek"
+            }]
+    }, {
+        "bookName": "Think like a Monk",
+        "categories":["Self-Development"],
+        "bookAuthors": [{
+                "firstName": "Jay",
+                "lastName": "Shety"
+            }]
+    }, {
+        "bookName": "Harry Potter and the Azkaban\u0027s prizoner",
+        "categories":["Literature"],
+        "bookAuthors": [{
+                "firstName": "Joanne",
+                "lastName": "Rowling"
+            }]
+    }]
